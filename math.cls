@@ -20,3 +20,4 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\tr}{tr}
