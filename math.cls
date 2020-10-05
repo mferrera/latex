@@ -7,13 +7,17 @@
 \RequirePackage{enumitem}
 \RequirePackage{mathtools}
 \RequirePackage{algorithm}
-\RequirePackage{algpseudocode}
+\RequirePackage[noend]{algpseudocode}
 \RequirePackage{interval}
 \RequirePackage{graphicx}
 \RequirePackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
 {geometry}
 
 \graphicspath{ {.} }
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
