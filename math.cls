@@ -25,3 +25,4 @@
 \newcommand{\Z}{\mathbb{Z}}
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Ker}{Ker}
