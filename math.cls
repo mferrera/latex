@@ -15,6 +15,16 @@
 
 \graphicspath{ {.} }
 
+% Preferred tikz graph nodes, particular to DFAs and NFAs with final state
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzset{
+    vertex/.style={circle,fill=lightgray!40,draw,minimum size=2.5em},
+    final/.style={circle,fill=lightgray!40,draw,minimum size=2.5em,
+        double=lightgray!40,double distance=0.2em,outer sep=0.1em},
+    edge/.style={->,> = latex}
+}
+
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
 \makeatother
