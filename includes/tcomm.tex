@@ -1,0 +1,70 @@
+\usepackage{keyval}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,calc}
+\tikzset{%
+    tchostname/.style={draw=none,minimum size=1em},
+    tchoststart/.style={draw=none,inner sep=0em,minimum size=0em},
+    tchostend/.style={draw=none},
+    tcevent/.style={draw,circle,fill=black,inner sep=0em,
+        minimum size=0.25em,outer sep=0em},
+}
+
+\makeatletter
+% Keys
+\define@key{tcomm}{duration}{\def\tcomm@duration{#1}}
+% Counters
+\newcounter{tchostcount}
+\newcounter{tcmsgcount}
+\newcounter{tceventcount}
+\newenvironment{tcomm}[1][]
+{
+    \setkeys{tcomm}{duration=10,#1}
+    % Usage: \host{name}
+    \newcommand{\host}[1]{
+        \node[tchostname] (##1) at (-0.3,\value{tchostcount}) {##1};
+        \node[tchoststart] (##1start) at (0,\value{tchostcount}) {};
+        \node[tchostend] (##1end) at (\tcomm@duration,\value{tchostcount}) {};
+        \path[thick] (##1start) edge (##1end);
+        \addtocounter{tchostcount}{-1}
+    }
+
+    % Usage: \msg[lost,label=name]{hostA}{1}{hostB}{2}
+    \newif\ifmsg@lost%
+    \define@key{msg}{lost}[true]{\csname msg@lost##1\endcsname}
+    \define@key{msg}{label}{\def\msg@label{##1}}
+    \newcommand{\msg}[5][]{
+        \msg@lostfalse%
+        \setkeys{msg}{label=,lost=,##1}
+        \ifmsg@lost%
+            \path[dashed,-|] let \p1 = (##2), \p2 = (##4) in (##3,\y1) edge
+                node[right] {\msg@label} (##5,\y2);
+        \else
+            \path[thick] let \p1 = (##2), \p2 = (##4) in (##3,\y1) edge
+                node[right] {\msg@label} (##5,\y2);
+        \fi
+        \stepcounter{tcmsgcount}
+    }
+
+    % Usage: \event[label=name]{host}{1}
+    \define@key{event}{label}{\def\event@label{##1}}
+    \newcommand{\event}[3][]{
+        \setkeys{event}{label=,##1}
+        \path let \p1 = (##2) in node at (##3,\y1)
+            [tcevent,label=\event@label] {};
+        \stepcounter{tceventcount}
+    }
+    \begin{center}
+    \begin{tikzpicture}[->,> = stealth,thick]
+}{
+    % Bring back to last host line
+    \addtocounter{tchostcount}{1}
+    % Left border
+    \path[-,thick] (0,\value{tchostcount}) edge (0,0) {};
+    \end{tikzpicture}
+    \end{center}
+    \setcounter{tchostcount}{0}
+    \setcounter{tcmsgcount}{0}
+    \setcounter{tceventcount}{0}
+}
+\makeatother
