@@ -33,6 +33,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Ker}{Ker}
