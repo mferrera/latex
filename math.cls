@@ -2,6 +2,7 @@
 
 \RequirePackage{fancyhdr}
 \RequirePackage{amsmath}
+\RequirePackage{amsthm}
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{enumitem}
@@ -12,6 +13,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
 {geometry}
+\RequirePackage{tcolorbox}
 
 \graphicspath{ {.} }
 
@@ -37,3 +39,4 @@
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Ker}{Ker}
+\newcommand{\proven}{\hfill$\square$\vspace{5pt}\hrule\noindent\\\\}
