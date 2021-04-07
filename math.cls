@@ -1,4 +1,4 @@
-\LoadClass[11pt]{article}
+\LoadClass[8pt]{article}
 
 \RequirePackage{fancyhdr}
 \RequirePackage{amsmath}
@@ -39,4 +39,5 @@
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\sgn}{sgn}
 \newcommand{\proven}{\hfill$\square$\vspace{5pt}\hrule\noindent\\\\}
